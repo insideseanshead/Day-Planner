@@ -26,12 +26,13 @@ var day = $('<p>');
 
 //Create an array that holds strings of all the hours from 9am to 5 pm. ["9 AM", "10 AM"...]
 
-var timeArray = ['9 AM', '10 AM', '11 AM', '12 PM', '1 BM', '2 PM', '3PM', '4 PM', '5 PM']
+var timeArray = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM']
 
 //TODO: make a row with time, text field and save button
 
 
 //TODO: loop that creates a row for each hour from 9am to 5 pm using above array. create div for row, create div, textarea, and a button.
+
 
 for(timeIndex = 0; timeIndex < timeArray.length; timeIndex++){
     var row = $('<div>')
@@ -49,17 +50,27 @@ for(timeIndex = 0; timeIndex < timeArray.length; timeIndex++){
         saveBtn.text("Save");
         row.append(saveBtn)
 
-    if(timeArray[timeIndex] > moment().format("h A")){
-        row.addClass("future")
-    } else if(timeArray[timeIndex] === moment().format("h A")){
-        row.addClass("present")
-    } else {
-        row.addClass("past")
-    }
+
+        
+
+       
+
+        // if(timeArray[timeIndex] > moment().format("h A")){
+        //     row.addClass("future")
+        // } else if(timeArray[timeIndex] === moment().format("h A")){
+        //     row.addClass("present")
+        // } else {
+        //     row.addClass("past")
+        // }    
+    
 }
 
 
-// How can I check the hour of rows to current time? (moment.js and get the current time and compare it to time assigned to row)
+
+
+
+
+//TODO: How can I check the hour of rows to current time? (moment.js and get the current time and compare it to time assigned to row)
 
 //TODO:  give elements content and classes that they need e.g using an if statement we can check using moment.js to see if the time is past, give the text are class of past. Then append to page.
 
