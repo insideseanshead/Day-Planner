@@ -48,9 +48,10 @@ for(timeIndex = 0; timeIndex < timeArray.length; timeIndex++){
     var textCol =$('<textarea>');
         textCol.addClass(`col-md-10 ${timeIndex}`);
         textCol.attr('data-time', timeIndex+9);
+        textCol.attr('id', timeIndex)
         row.append(textCol);
     var saveBtn = $('<button>');
-        saveBtn.addClass("col-md-1 saveBtn");
+        saveBtn.addClass(`col-md-1 saveBtn ${timeIndex}`);
         saveBtn.text("Save");
         row.append(saveBtn)
 
@@ -77,7 +78,10 @@ for(timeIndex = 0; timeIndex < timeArray.length; timeIndex++){
 //Saving inputs to text area.
 
 
-
+// textArray = [{
+//     time : 
+//     text: 
+// }]
 
 
 $("textarea").each(function(){
@@ -95,12 +99,10 @@ $("textarea").each(function(){
 
 
 
-$('.container').on("click", '.saveBtn', function(event){
-    var myTextArea = $(this).siblings('textarea[timeIndex]');
-    console.log(myTextArea.val())
-    userInput = myTextArea.val()
 
-    localStorage.setItem(myTextArea, userInput)
+$('.container').on("click", '.saveBtn', function(event){
+    var textput = $(this).siblings('textarea');    
+    localStorage.setItem("textarea", textInput())
 })
 
 
