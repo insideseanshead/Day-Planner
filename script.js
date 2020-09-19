@@ -19,7 +19,7 @@ console.log(moment().format("h A"))
 
 // var day = document.create('<p>');
 var day = $('<p>');
-    day.text(moment().format("d MMMM Mo"));
+    day.text(moment().format("dddd, MMMM Do, YYYY. h:mm A"));
     $('.jumbotron').append(day);
 // moment().format("d MMMM Mo");
 // document.querySelector('.jumbotron').appendChild(day)
@@ -33,17 +33,21 @@ var timeArray = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 P
 
 //TODO: loop that creates a row for each hour from 9am to 5 pm using above array. create div for row, create div, textarea, and a button.
 
+var currentHour = moment().format("H")
+        // console.log(timeArray[timeIndex])
+        // console.log(currentHour)
 
 for(timeIndex = 0; timeIndex < timeArray.length; timeIndex++){
     var row = $('<div>')
         row.addClass("row time-block")
-        $('.container').append(row);
+       
     var timeCol = $('<div>');
         timeCol.addClass("col-md-1 hour");
         timeCol.text(timeArray[timeIndex]);
         row.append(timeCol);
     var textCol =$('<textarea>');
-        textCol.addClass('col-md-10');
+        textCol.addClass(`col-md-10 ${timeIndex}`);
+        textCol.attr('data-time', timeIndex+9);
         row.append(textCol);
     var saveBtn = $('<button>');
         saveBtn.addClass("col-md-1 saveBtn");
@@ -52,20 +56,43 @@ for(timeIndex = 0; timeIndex < timeArray.length; timeIndex++){
 
 
         
+// var currentHour = moment().format("H")
+//         console.log(timeArray[timeIndex])
+//         console.log(currentHour)
 
-       
 
-        // if(timeArray[timeIndex] > moment().format("h A")){
+        // if(timeArray[timeIndex] < currentHour){
+        //     console.log(currentHour)
         //     row.addClass("future")
-        // } else if(timeArray[timeIndex] === moment().format("h A")){
+        // } 
+        // if(timeArray[timeIndex] === moment().format("h A")){
         //     row.addClass("present")
         // } else {
         //     row.addClass("past")
         // }    
-    
+
+        $('.container').append(row);
 }
 
+$("textarea").each(function(){
+    console.log($(this).attr('data-time'))
+    if(parseInt($(this).attr('data-time')) > parseInt(currentHour)){
+        console.log(currentHour)
+        $(this).addClass("future")
+    } else if(parseInt($(this).attr('data-time')) === parseInt(currentHour)){
+        $(this).addClass("present")
+    } else {
+        $(this).addClass("past")
+    }    
 
+})
+
+
+
+$('.container').on("click", '.saveBtn', function(event){
+    var myTextArea = $(this).siblings('textarea');
+    console.log(myTextArea.val())
+})
 
 
 
