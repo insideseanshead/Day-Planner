@@ -74,6 +74,12 @@ for(timeIndex = 0; timeIndex < timeArray.length; timeIndex++){
         $('.container').append(row);
 }
 
+//Saving inputs to text area.
+
+
+
+
+
 $("textarea").each(function(){
     console.log($(this).attr('data-time'))
     if(parseInt($(this).attr('data-time')) > parseInt(currentHour)){
@@ -90,8 +96,11 @@ $("textarea").each(function(){
 
 
 $('.container').on("click", '.saveBtn', function(event){
-    var myTextArea = $(this).siblings('textarea');
+    var myTextArea = $(this).siblings('textarea[timeIndex]');
     console.log(myTextArea.val())
+    userInput = myTextArea.val()
+
+    localStorage.setItem(myTextArea, userInput)
 })
 
 
