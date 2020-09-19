@@ -1,19 +1,7 @@
 console.log(moment().format("h A"))
 
-//TODO: Create one row w/ time text area and button using jquery.
-//layout of what we need to make with JQ
 
-{/* <div class="row time-block">
-        <div class="col-md-1 hour">
-          9am
-        </div>
-        <textarea class="col-md-10">
 
-        </textarea>
-        <button class="col-md-1 saveBtn">
-          save
-        </button>
- </div> */}
 
 //show the day on top of calendar. Use moment.js grab the time, and set text of ptag w/ id currentDay to display the current day.
 
@@ -21,17 +9,12 @@ console.log(moment().format("h A"))
 var day = $('<p>');
     day.text(moment().format("dddd, MMMM Do, YYYY. h:mm A"));
     $('.jumbotron').append(day);
-// moment().format("d MMMM Mo");
-// document.querySelector('.jumbotron').appendChild(day)
 
 //Create an array that holds strings of all the hours from 9am to 5 pm. ["9 AM", "10 AM"...]
 
 var timeArray = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM']
 
-//TODO: make a row with time, text field and save button
 
-
-//TODO: loop that creates a row for each hour from 9am to 5 pm using above array. create div for row, create div, textarea, and a button.
 
 var currentHour = moment().format("H")
         // console.log(timeArray[timeIndex])
@@ -57,20 +40,7 @@ for(timeIndex = 0; timeIndex < timeArray.length; timeIndex++){
 
 
         
-// var currentHour = moment().format("H")
-//         console.log(timeArray[timeIndex])
-//         console.log(currentHour)
 
-
-        // if(timeArray[timeIndex] < currentHour){
-        //     console.log(currentHour)
-        //     row.addClass("future")
-        // } 
-        // if(timeArray[timeIndex] === moment().format("h A")){
-        //     row.addClass("present")
-        // } else {
-        //     row.addClass("past")
-        // }    
 
         $('.container').append(row);
 }
@@ -78,10 +48,6 @@ for(timeIndex = 0; timeIndex < timeArray.length; timeIndex++){
 //Saving inputs to text area.
 
 
-// textArray = [{
-//     time : 
-//     text: 
-// }]
 
 
 $("textarea").each(function(){
@@ -100,25 +66,86 @@ $("textarea").each(function(){
 
 
 
-$('.container').on("click", '.saveBtn', function(event){
-    var textput = $(this).siblings('textarea');    
-    localStorage.setItem("textarea", textInput())
+// $('.container').on("click", '.saveBtn', function(event){
+//     var textput = $(this).siblings('textarea');    
+//     localStorage.setItem("textarea", textInput())
+// })
+
+
+//click events to log text area into local storage.
+$('.container').on('click', '.0', function() {
+    var userText = $(this).siblings('textarea');
+    localStorage.setItem('nine', userText.val())
 })
 
+$('.container').on('click', '.1', function() {
+    var userText = $(this).siblings('textarea');
+    localStorage.setItem('ten', userText.val())
+})
 
+$('.container').on('click', '.2', function() {
+    var userText = $(this).siblings('textarea');
+    localStorage.setItem('eleven', userText.val())
+})
 
+$('.container').on('click', '.3', function() {
+    var userText = $(this).siblings('textarea');
+    localStorage.setItem('twelve', userText.val())
+})
 
-//TODO: How can I check the hour of rows to current time? (moment.js and get the current time and compare it to time assigned to row)
+$('.container').on('click', '.4', function() {
+    var userText = $(this).siblings('textarea');
+    localStorage.setItem('one', userText.val())
+})
 
-//TODO:  give elements content and classes that they need e.g using an if statement we can check using moment.js to see if the time is past, give the text are class of past. Then append to page.
+$('.container').on('click', '.5', function() {
+    var userText = $(this).siblings('textarea');
+    localStorage.setItem('two', userText.val())
+})
 
-//TODO: create click event listener for buttons.
+$('.container').on('click', '.6', function() {
+    var userText = $(this).siblings('textarea');
+    localStorage.setItem('three', userText.val())
+})
 
-//TODO: Grab the value of the text area and save it to a variable. (I need to be able to save the text area from the text area from the same row as button) 
+$('.container').on('click', '.7', function() {
+    var userText = $(this).siblings('textarea');
+    localStorage.setItem('four', userText.val())
+})
 
-//TODO: Using localStorage.setItem save the text to local storage.
+$('.container').on('click', '.8', function() {
+    var userText = $(this).siblings('textarea');
+    localStorage.setItem('five', userText.val())
+})
 
-//TODO: Retrieve the data from local storage using localStorage.getItem and show it to user. (How can I know what text from local storage goes to what text area?)
+//Get item from local storage that has been saved by user.
+var test = localStorage.getItem("nine");
+$("#0").text(test);
+
+var test = localStorage.getItem("ten");
+$("#1").text(test);
+
+var test = localStorage.getItem("eleven");
+$("#2").text(test);
+
+var test = localStorage.getItem("twelve");
+$("#3").text(test);
+
+var test = localStorage.getItem("one");
+$("#4").text(test);
+
+var test = localStorage.getItem("two");
+$("#5").text(test);
+
+var test = localStorage.getItem("three");
+$("#6").text(test);
+
+var test = localStorage.getItem("four");
+$("#7").text(test);
+
+var test = localStorage.getItem("five");
+$("#8").text(test);
+
 
 // localStorage.setItem("TestOne", "My first Note")
 // localStorage.setItem("TestTwo", "My first Note")
